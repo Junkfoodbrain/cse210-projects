@@ -29,6 +29,12 @@ class Program
 
         float average = ((float)sum) / numbers.Count;
 
+        int max = numbers[0];
+        foreach (int number in numbers)
+        {
+            
+        }
+
         Console.WriteLine($"The sum is: {sum}");
 
         Console.WriteLine($"The average is: {average}");
