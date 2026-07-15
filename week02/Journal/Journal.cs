@@ -15,6 +15,13 @@ public class Journal
     }
     public void DisplayAll()
     {
+        //adding small reminder to user to load a file so they can view or add entries.
+        if (_entries == null || _entries.Count == 0)
+        {
+            Console.WriteLine("Please load a file first.");
+            return;
+        }
+
         foreach (Entry entry in _entries)
         {
             entry.Display();
