@@ -14,6 +14,6 @@ public class Entry
         Console.WriteLine();
     }
 
-     
+
 }
 

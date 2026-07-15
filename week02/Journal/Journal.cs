@@ -50,7 +50,7 @@ public class Journal
         string[] lines = File.ReadAllLines(file);
         foreach (string line in lines)
         {
-            string[] parts = line.Split(new string[] {"~~"}, StringSplitOptions.None);
+            string[] parts = line.Split(new string[] { "~~" }, StringSplitOptions.None);
             if (parts.Length >= 3)
             {
                 Entry e = new Entry();

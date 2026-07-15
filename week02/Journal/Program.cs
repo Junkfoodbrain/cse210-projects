@@ -18,7 +18,7 @@ class Program
 
         bool running = true;
         while (running)
-        {            
+        {
             Console.WriteLine("Please choose one of the following options: ");
             Console.WriteLine("1. Write");
             Console.WriteLine("2. Display");
@@ -76,6 +76,6 @@ class Program
 
             //write a blank line before the menu repeats. Gives the user a visual break.
             Console.WriteLine();
-        }        
+        }
     }
 }
