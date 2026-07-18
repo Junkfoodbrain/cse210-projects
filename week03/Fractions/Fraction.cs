@@ -25,4 +25,9 @@ public class Fraction
     {
         return $"{_top}/{_bottom}";
     }
+
+    public double GetDecimalValue()
+    {
+        return (double)_top / _bottom;
+    }
 }
