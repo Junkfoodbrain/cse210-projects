@@ -19,11 +19,11 @@ public class Scripture
 
     }
 
-     public void HideRandomWords(int numberToHide)
+    public void HideRandomWords(int numberToHide)
     {
         Random random = new Random();
 
-        for (int i = 0; i <numberToHide; i++)
+        for (int i = 0; i < numberToHide; i++)
         {
             int index = random.Next(_words.Count);
             _words[index].Hide();
@@ -42,8 +42,8 @@ public class Scripture
         return scriptureText.TrimEnd();
     }
 
-   
-    
+
+
     public bool IsCompletelyHidden()
     {
         foreach (Word word in _words)
@@ -54,6 +54,6 @@ public class Scripture
             }
         }
         return true;
-        
+
     }
 }
