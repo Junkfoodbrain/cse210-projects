@@ -4,7 +4,7 @@ public class Scripture
 {
     private Reference _reference;
     private List<Word> _words;
-    
+
 
     public Scripture(Reference reference, string text)
     {
@@ -24,10 +24,33 @@ public class Scripture
     {
         Random random = new Random();
 
-        for (int i = 0; i < numberToHide; i++)
+        List<Word> visibleWords = new List<Word>();
+
+        foreach (Word word in _words)
         {
-            int index = random.Next(_words.Count);
-            _words[index].Hide();
+            if (!word.IsHidden())
+            {
+                visibleWords.Add(word);
+
+            }
+        }
+
+        // for (int i = 0; i < numberToHide && visibleWords.Count > 0; i++)
+        // {
+        //     int index = random.Next(visibleWords.Count);
+        //     visibleWords[index].Hide();
+        //     visibleWords.RemoveAt(index);
+        // }
+
+        // while is better, though... I'll keep this one, below.
+
+        while (numberToHide > 0 && visibleWords.Count > 0)
+        {
+            int index = random.Next(visibleWords.Count);
+            visibleWords[index].Hide();
+            visibleWords.RemoveAt(index);
+            numberToHide--;
+
         }
     }
 
