@@ -4,6 +4,8 @@ class Program
 {
     static void Main(string[] args)
     {
+        Console.WriteLine();
+        
         Video video1 = new Video("How To Fish", "Bob Line", 300);
 
         Comment comment1 = new Comment("Tim", "Great catch!");
@@ -28,6 +30,7 @@ class Program
         {
             Console.WriteLine(comment.getName() + ": " + comment.getText());
         }
+        Console.WriteLine();
 
 
         Video video2 = new Video("Gardening with Clara", "Clara Green", 450);
@@ -51,6 +54,7 @@ class Program
         {
             Console.WriteLine(comment.getName() + ": " + comment.getText());
         }
+        Console.WriteLine();
 
 
         Video video3 = new Video("Baking for Dummies", "Becky Baker", 600);
@@ -74,6 +78,7 @@ class Program
         {
             Console.WriteLine(comment.getName() + ": " + comment.getText());
         }
+        Console.WriteLine();
         
     }
 }
