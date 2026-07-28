@@ -15,6 +15,11 @@ public class Video
         _comments = new List<Comment>();
     }
 
+    public List<Comment> getComments()
+    {
+        return _comments;
+    }
+    
     public string getTitle()
     {
         return _title;
