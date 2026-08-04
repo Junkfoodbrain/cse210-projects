@@ -1,4 +1,6 @@
-
+using System;
+using System.Collections.Generic;
+using System.Threading;
 
 public class Activity
 {
@@ -33,15 +35,48 @@ public class Activity
     public void DisplayEndingMessage()
     {
         Console.WriteLine();
-        Console.WriteLine($"Congratulations! You have completed {_duration} seconds of the {_name}.");
+        Console.WriteLine("Well done!!");
+        ShowSpinner(3);
+        Console.WriteLine();
+
+        Console.WriteLine($"You have completed {_duration} seconds of the {_name}.");
+        ShowSpinner(3);
+        Console.WriteLine();
     }
     public void ShowSpinner(int seconds)
     {
+        List<string> spinner = new List<string> { "|", "/", "-", "\\" };
 
+        DateTime endTime = DateTime.Now.AddSeconds(seconds);
+        int i = 0;
+
+        while (DateTime.Now < endTime)
+        {
+            Console.Write(spinner[i]);
+            Thread.Sleep(500);
+            Console.Write("\b \b");
+
+            i++;
+
+            if (i >= spinner.Count)
+            {
+                i = 0;
+            }
+        }
+    }
+    
+    protected int GetDuration()
+    {
+        return _duration;
     }
     public void ShowCountDown(int seconds)
     {
-
+        for (int i = seconds; i > 0; i--)
+        {
+            Console.Write(i);
+            Thread.Sleep(1000);
+            Console.Write("\b \b");
+        }
     }
 
 }

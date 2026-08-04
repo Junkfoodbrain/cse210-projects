@@ -9,5 +9,8 @@ public class ReflectingActivity : Activity
 
     public void Run()
     {
+        DisplayStartingMessage();
+        Console.WriteLine("");
+        DisplayEndingMessage();
     }
 }
