@@ -9,7 +9,7 @@ class Program
         Console.WriteLine("Hello World! This is the Mindfulness Project.");
 
         string choice = "";
-        while (choice != "4")
+        while (choice != "4" && !string.Equals(choice, "quit", StringComparison.OrdinalIgnoreCase))
         {
             Console.Clear();
             Console.WriteLine("Menu Options:");
