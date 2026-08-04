@@ -40,13 +40,13 @@ class Program
                 Console.WriteLine("Goodbye!");
             }
             else
-            {                
+            {
                 Console.WriteLine("Invalid choice. Press Enter to continue.");
                 Console.ReadLine();
-                
+
             }
 
         }
-       
+
     }
 }

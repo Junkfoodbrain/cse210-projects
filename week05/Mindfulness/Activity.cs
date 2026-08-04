@@ -64,7 +64,7 @@ public class Activity
             }
         }
     }
-    
+
     protected int GetDuration()
     {
         return _duration;

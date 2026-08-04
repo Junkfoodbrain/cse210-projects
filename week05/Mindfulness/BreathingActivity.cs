@@ -28,7 +28,7 @@ public class BreathingActivity : Activity
             ShowCountDown(4);
             Console.WriteLine();
         }
-        
+
         DisplayEndingMessage();
     }
 }
