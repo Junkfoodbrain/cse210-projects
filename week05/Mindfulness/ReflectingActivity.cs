@@ -3,6 +3,8 @@ public class ReflectingActivity : Activity
     private List<string> _prompts;
     private List<string> _questions;
 
+    private List<string> _unusedQuestions;
+
     public ReflectingActivity()
         : base(
             "Reflecting Activity",
@@ -11,22 +13,44 @@ public class ReflectingActivity : Activity
         _prompts = new List<string>();
         _questions = new List<string>();
 
+        _questions.Add("Why was this experience meaningful to you?");
+        _questions.Add("Have you ever done anything like this before?");
+        _questions.Add("What did you learn from this experience?");
+        _questions.Add("How did this experience make you feel?");
+        _questions.Add("Would you ever do this again in the future?");
+        _questions.Add("How was your life blessed from this experience?");
+        _questions.Add("What aspect of your testimony was strengthened from this experience?");
+        _questions.Add("Would sharing this with others be beneficial to them?");
+
+        _unusedQuestions = new List<string>();
+        foreach (string question in _questions)
+        {
+            _unusedQuestions.Add(question);
+        }
+
         _prompts.Add("Think of a time when you stood up for someone else.");
         _prompts.Add("Think of a time when you felt impressed to share the gospel.");
         _prompts.Add("Think of a time when you paid tithing, even when it was difficult.");
         _prompts.Add("Think of a time when you felt a prompting to help someone in need.");
 
-        _questions.Add("Why was this experience meaningful to you?");
-        _questions.Add("Have you ever done anything like this before?");
-        _questions.Add("What did you learn from this experience?");
-        _questions.Add("How did this experience make you feel?");
     }
-
+//setting up to get random questions to pick from unused questions list
     public string GetRandomQuestion()
     {
+        if (_unusedQuestions.Count == 0)
+        {
+            foreach (string question in _questions)
+            {
+                _unusedQuestions.Add(question);
+            }
+        }
+
         Random random = new Random();
-        int index = random.Next(_questions.Count);
-        return _questions[index];
+        int index = random.Next(_unusedQuestions.Count);
+        string question = _unusedQuestions[index];
+        _unusedQuestions.RemoveAt(index);
+        
+        return question;
     }
 
     public string GetRandomPrompt()
@@ -62,7 +86,7 @@ public class ReflectingActivity : Activity
             ShowSpinner(4);
             Console.WriteLine();
         }
-        
+
         DisplayEndingMessage();
     }
 }
