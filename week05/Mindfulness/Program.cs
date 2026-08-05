@@ -1,6 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Threading;
+
+//Extra Creativity: Reflecting activity now uses a no-repeat unused question list so random questions
+//are shown until all questions have been used at least once.
 
 class Program
 {

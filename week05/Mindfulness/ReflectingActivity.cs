@@ -23,9 +23,10 @@ public class ReflectingActivity : Activity
         _questions.Add("Would sharing this with others be beneficial to them?");
 
         _unusedQuestions = new List<string>();
-        foreach (string question in _questions)
+
+        foreach (string item in _questions)
         {
-            _unusedQuestions.Add(question);
+            _unusedQuestions.Add(item);
         }
 
         _prompts.Add("Think of a time when you stood up for someone else.");
@@ -34,23 +35,23 @@ public class ReflectingActivity : Activity
         _prompts.Add("Think of a time when you felt a prompting to help someone in need.");
 
     }
-//setting up to get random questions to pick from unused questions list
+
     public string GetRandomQuestion()
     {
         if (_unusedQuestions.Count == 0)
         {
-            foreach (string question in _questions)
+            foreach (string item in _questions)
             {
-                _unusedQuestions.Add(question);
+                _unusedQuestions.Add(item);
             }
         }
 
         Random random = new Random();
         int index = random.Next(_unusedQuestions.Count);
-        string question = _unusedQuestions[index];
+        string promptQuestion = _unusedQuestions[index];
         _unusedQuestions.RemoveAt(index);
-        
-        return question;
+
+        return promptQuestion;
     }
 
     public string GetRandomPrompt()
