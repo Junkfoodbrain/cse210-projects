@@ -4,14 +4,15 @@ class Program
 {
     static void Main(string[] args)
     {
+        List<Shape> shapes = new List<Shape>();
 
-        Square square = new Square("Red", 4);
-        Rectangle rectangle = new Rectangle("Blue", 3, 5);
-        Circle circle = new Circle("Green", 2);
+        shapes.Add(new Square("Purple", 6));
+        shapes.Add(new Rectangle("Red", 3, 5));
+        shapes.Add(new Circle("Yellow", 2));
 
-
-        Console.WriteLine($"Square: color={square.GetColor()}, Area={square.GetArea()}");
-        Console.WriteLine($"Rectangle: color={rectangle.GetColor()}, Area={rectangle.GetArea()}");
-        Console.WriteLine($"Circle: Color={circle.GetColor()}, Area={circle.GetArea()}");
+        foreach (Shape shape in shapes)
+        {
+            Console.WriteLine($"Color={shape.GetColor()}, Area={shape.GetArea()}");
+        }        
     }
 }
