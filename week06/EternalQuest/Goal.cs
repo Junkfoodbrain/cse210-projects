@@ -21,6 +21,20 @@ public abstract class Goal
         return $"[] {_shortName} ({_description})";
     }
 
+    public string GetShortName()
+    {
+        return _shortName;
+    }
+
+    public string GetDescription()
+    {
+        return _description;
+    }
+
+    public int GetPoints()
+    {
+        return _points;
+    }
 
     public abstract string GetStringRepresentation();
     
