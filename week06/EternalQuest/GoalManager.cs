@@ -168,21 +168,64 @@ public class GoalManager
 
             if (line.StartsWith("SimpleGoal:"))
             {
-                Console.WriteLine("Found a SimpleGoal line.");
+                string data = line.Substring("SimpleGoal:".Length);
+                string[] parts = data.Split(',');
+
+                string name = parts[0];
+                string description = parts[1];
+                int points = int.Parse(parts[2]);
+                bool isComplete = bool.Parse(parts[3]);
+
+                SimpleGoal simpleGoal = new SimpleGoal(name, description, points);
+
+                if (isComplete)
+                {
+                    simpleGoal.RecordEvent();
+                }
+
+                _goals.Add(simpleGoal);
+                
             }
             else if (line.StartsWith("EternalGoal:"))
             {
-                Console.WriteLine("Found an EternalGoal line.");
+                string data = line.Substring("EternalGoal:".Length);
+                string[] parts = data.Split(',');
+
+                string name = parts[0];
+                string description = parts[1];
+                int points = int.Parse(parts[2]);
+
+                EternalGoal eternalGoal = new EternalGoal(name, description, points);
+                _goals.Add(eternalGoal);
+
             }
             else if (line.StartsWith("ChecklistGoal:"))
             {
-                Console.WriteLine("Found a ChecklistGoal line.");
+                string data = line.Substring("ChecklistGoal:".Length);
+                string[] parts = data.Split(',');
+
+                string name = parts[0];
+                string description = parts[1];
+                int points = int.Parse(parts[2]);
+                int bonus = int.Parse(parts[3]);
+                int target = int.Parse(parts[4]);
+                int amountCompleted = int.Parse(parts[5]);
+
+                ChecklistGoal checklistGoal = new ChecklistGoal(name, description, points, target, bonus);
+
+                for (int j = 0; j < amountCompleted; j++)
+                {
+                    checklistGoal.RecordEvent();
+                }
+
+                _goals.Add(checklistGoal);
             }
         }
         
     }
     
     private void RecordEvent()
+
     {
         if (_goals.Count == 0)
         {

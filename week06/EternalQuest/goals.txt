@@ -1,4 +1,2 @@
 0
-EternalGoal:Study Scriptures,Study scriptures for at least 10 minutes,10
-SimpleGoal:Volunteer in Nursery,Volunteer one Sunday in nursery so the teachers can attend their own class,50,False
-ChecklistGoal:Morning Prayer,Say your prayers every morning to start the day off right. Earn bonus points for not missing a day.,10,30,7,0
+
