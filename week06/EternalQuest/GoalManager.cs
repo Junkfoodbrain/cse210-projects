@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 public class GoalManager
 {
@@ -60,7 +61,6 @@ public class GoalManager
             {
                 Console.WriteLine("Invalid choice. Please select from the menu options.");
             }
-
         }
     }
 
@@ -125,17 +125,89 @@ public class GoalManager
 
     private void SaveGoals()
     {
-        Console.WriteLine("SaveGoals placeholder");
+        Console.Write("What is the filename for the goal file? ");
+        string fileName = Console.ReadLine();
+
+        List<string> lines = new List<string>();
+        lines.Add(_score.ToString());
+
+        foreach (Goal goal in _goals)
+        {
+            lines.Add(goal.GetStringRepresentation());
+        }
+
+        File.WriteAllLines(fileName, lines);
+        Console.WriteLine("Goals saved successfully.");
     }
 
     private void LoadGoals()
     {
-        Console.WriteLine("LoadGoals not built yet.");
+        Console.Write("What is the filename for the goal file? ");
+        string fileName = Console.ReadLine();
+
+        if (!File.Exists(fileName))
+        {
+            Console.WriteLine("File not found.");
+            return;
+        }
+
+        string[] lines = File.ReadAllLines(fileName);
+
+        if (lines.Length == 0)
+        {
+            Console.WriteLine("File is empty.");
+            return;
+        }
+
+        _score = int.Parse(lines[0]);
+        _goals.Clear();
+
+        for (int i = 1; i < lines.Length; i++)
+        {
+            string line = lines[i];
+
+            if (line.StartsWith("SimpleGoal:"))
+            {
+                Console.WriteLine("Found a SimpleGoal line.");
+            }
+            else if (line.StartsWith("EternalGoal:"))
+            {
+                Console.WriteLine("Found an EternalGoal line.");
+            }
+            else if (line.StartsWith("ChecklistGoal:"))
+            {
+                Console.WriteLine("Found a ChecklistGoal line.");
+            }
+        }
+        
     }
     
     private void RecordEvent()
     {
-        Console.WriteLine("RecordEvent placholder.");
+        if (_goals.Count == 0)
+        {
+            Console.WriteLine("No goals available to record.");
+            return;
+        }
+
+        Console.WriteLine("The goals are: ");
+        for (int i = 0; i < _goals.Count; i++)
+        {
+            Console.WriteLine($"{i + 1}. {_goals[i].GetShortName()}");
+        }
+
+        Console.Write("Which goal did you accomplish?");
+        int goalNumber = int.Parse(Console.ReadLine());
+
+        if (goalNumber < 1 || goalNumber > _goals.Count)
+        {
+            Console.WriteLine("Invalid Goal number.");
+            return;
+        }
+
+        int pointsEarned = _goals[goalNumber - 1].RecordEvent();
+        _score += pointsEarned;
+
+        Console.WriteLine($"Congratulations! You have earned {pointsEarned} points!");
     }
-    
 }
