@@ -27,7 +27,8 @@ public class GoalManager
             Console.WriteLine(" 3. Save Goals");
             Console.WriteLine(" 4. Load Goals");
             Console.WriteLine(" 5. Record Event");
-            Console.WriteLine(" 6. Quit");
+            Console.WriteLine(" 6. Show Statistics");
+            Console.WriteLine(" 7. Quit");
             Console.Write("Select a choice from the menu: ");
 
             string choice = Console.ReadLine();
@@ -54,6 +55,11 @@ public class GoalManager
                 RecordEvent();
             }
             else if (choice == "6")
+            {
+                ShowStatistics();
+            }
+
+            else if (choice == "7")
             {
                 isRunning = false;
             }
@@ -251,6 +257,43 @@ public class GoalManager
         _score += pointsEarned;
 
         Console.WriteLine($"Congratulations! You have earned {pointsEarned} points!");
+    }
+
+    private void ShowStatistics()
+    {
+        if (_goals.Count == 0)
+        {
+            Console.WriteLine("No goals created yet.");
+            return;
+        }
+
+        int completed = 0;
+        int simpleCount = 0;
+        int eternalCount = 0;
+        int checklistCount = 0;
+
+        foreach (Goal goal in _goals)
+        {
+            if (goal.IsComplete())
+            {
+                completed++;
+            }
+
+            if (goal is SimpleGoal) simpleCount++;
+            else if (goal is EternalGoal) eternalCount++;
+            else if (goal is ChecklistGoal) checklistCount++;
+        }
+
+        double percentComplete = (double)completed / _goals.Count * 100.0;
+
+        Console.WriteLine("Goal Statistics:");
+        Console.WriteLine($"- Total goals: {_goals.Count}");
+        Console.WriteLine($"- Completed goals: {completed}");
+        Console.WriteLine($"- Completion rate: {Math.Round(percentComplete)}%");
+        Console.WriteLine($"- Simple goals: {simpleCount}");
+        Console.WriteLine($"- Eternal goals: {eternalCount}");
+        Console.WriteLine($"- Checklist goals: {checklistCount}");
+        Console.WriteLine($"- Current score: {_score}");
     }
 }
 

@@ -1,3 +1,5 @@
-0
-SimpleGoal:Volunteer in Nursery,Volunteer one Sunday in Nursery so the teachers can attend their own class,50,False
-ChecklistGoal:Morning Prayer,Say your morning prayers every day and earn bonus points for not skipping a day,10,30,7,0
+160
+SimpleGoal:Sacrament meeting,Attend Sacrament meeting and get 100 points,100,True
+EternalGoal:Study Scriptures,Study your scriptures for at least 10 minutes,50
+SimpleGoal:Volunteer in Nursery,Volunteer one Sunday so one of the teachers can attend their own class,50,True
+ChecklistGoal:Morning Prayer,Say your morning prayers every morning to start the day off right. Earn bonus points if you are consistent for 7 days.,10,30,7,1
