@@ -1,2 +1,3 @@
 0
-
+SimpleGoal:Volunteer in Nursery,Volunteer one Sunday in Nursery so the teachers can attend their own class,50,False
+ChecklistGoal:Morning Prayer,Say your morning prayers every day and earn bonus points for not skipping a day,10,30,7,0

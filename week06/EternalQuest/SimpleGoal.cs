@@ -8,6 +8,7 @@ public class SimpleGoal : Goal
         : base(name, description, points)
     {
         _isComplete = false;
+        
     }
 
     public override int RecordEvent()

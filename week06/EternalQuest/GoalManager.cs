@@ -105,6 +105,7 @@ public class GoalManager
             Console.WriteLine("Invalid goal type selected. Goal cannot be created.");
             return;
         }
+
         Console.WriteLine("Goal created successfully.");
     }
 
@@ -120,7 +121,7 @@ public class GoalManager
         for (int i = 0; i < _goals.Count; i++)
         {
             Console.WriteLine($"{i + 1}. {_goals[i].GetDetailsString()}");
-        }       
+        }
     }
 
     private void SaveGoals()
@@ -184,7 +185,7 @@ public class GoalManager
                 }
 
                 _goals.Add(simpleGoal);
-                
+
             }
             else if (line.StartsWith("EternalGoal:"))
             {
@@ -221,11 +222,9 @@ public class GoalManager
                 _goals.Add(checklistGoal);
             }
         }
-        
     }
-    
-    private void RecordEvent()
 
+    private void RecordEvent()
     {
         if (_goals.Count == 0)
         {
@@ -233,7 +232,7 @@ public class GoalManager
             return;
         }
 
-        Console.WriteLine("The goals are: ");
+        Console.WriteLine("The goals are:");
         for (int i = 0; i < _goals.Count; i++)
         {
             Console.WriteLine($"{i + 1}. {_goals[i].GetShortName()}");
@@ -254,3 +253,5 @@ public class GoalManager
         Console.WriteLine($"Congratulations! You have earned {pointsEarned} points!");
     }
 }
+
+
